@@ -13,7 +13,7 @@ for driverDirectory in drivers/* ; do
     done
 done
 /usr/local/bin/nasm -f elf kernel/wrapper.asm -o kernel/wrapper.o
-i386-elf-ld -o kernel/kernel.bin -Ttext 0x1000 kernel/wrapper.o drivers/monitor/monitor.o kernel/kernel.o --oformat binary
+i386-elf-ld -o kernel/kernel.bin -Ttext 0x1000 kernel/wrapper.o drivers/monitor/monitor.o util/util.o kernel/kernel.o --oformat binary
 
 # Create Image
 cat boot/boot.bin kernel/kernel.bin > dist/ample
