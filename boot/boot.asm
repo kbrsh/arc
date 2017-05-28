@@ -56,7 +56,7 @@ afterSwitch:
   jmp $ ; Loop
 
 ; Intro Message
-intro db "Ample OS", 0
+intro db "Ample", 0
 
 ; Boot Drive Location
 bootDrive db 0
