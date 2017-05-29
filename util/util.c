@@ -1,26 +1,26 @@
 #include "util.h"
 
-unsigned int length(char *str) {
-  unsigned int i = 0;
-  unsigned int len = 0;
+u32 length(s8 *str) {
+  u32 i = 0;
+  u32 len = 0;
   while(str[i++] != 0) {
     len++;
   }
   return len;
 }
 
-unsigned char portByteIn(unsigned short port) {
-  unsigned char output;
+u8 portByteIn(u16 port) {
+  u8 output;
   __asm__("in %%dx, %%al" : "=a" (output) : "d" (port));
   return output;
 }
 
-void portByteOut(unsigned short port, unsigned char value) {
+void portByteOut(u16 port, u8 value) {
   __asm__("out %%al, %%dx" : : "a" (value), "d" (port));
 }
 
-unsigned short portWordIn(unsigned short port) {
-  unsigned short output;
+unsigned short portWordIn(u16 port) {
+  u16 output;
   __asm__("in %%dx, %%ax" : "=a" (output) : "d" (port));
   return output;
 }

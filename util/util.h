@@ -1,10 +1,17 @@
 #ifndef UTIL_H
 #define UTIL_H
 
-unsigned int length(char *str);
+typedef unsigned int u32;
+typedef int s32;
+typedef unsigned short u16;
+typedef short s16;
+typedef unsigned char u8;
+typedef char s8;
 
-unsigned char portByteIn(unsigned short port);
-void portByteOut(unsigned short port, unsigned char value);
-unsigned short portWordIn(unsigned short port);
+u32 length(s8 *str);
+
+u8 portByteIn(u16 port);
+void portByteOut(u16 port, u8 value);
+u16 portWordIn(u16 port);
 
 #endif

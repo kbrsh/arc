@@ -1,25 +1,25 @@
 #include "monitor.h"
 #include "../../util/util.h"
 
-unsigned short *videoMemory = (unsigned short*) VIDEO_LOCATION;
-unsigned char cursorX = 0;
-unsigned char cursorY = 0;
+u16 *videoMemory = (unsigned short*) VIDEO_LOCATION;
+u8 cursorX = 0;
+u8 cursorY = 0;
 
 void scrollToBottom() {
 
 }
 
 void updateCursorPosition() {
-  unsigned short cursorPosition = cursorY * MAX_COLS + cursorX;
+  u16 cursorPosition = cursorY * MAX_COLS + cursorX;
   portByteOut(SCREEN_CONTROL_PORT, 14);
   portByteOut(SCREEN_DATA_PORT, cursorPosition >> 8);
   portByteOut(SCREEN_CONTROL_PORT, 15);
   portByteOut(SCREEN_DATA_PORT, cursorPosition);
 }
 
-void monitorPrintChar(char ch) {
-  unsigned short *videoMemory = (unsigned short*) VIDEO_LOCATION;
-  unsigned short *videoMemoryLocation;
+void monitorPrintChar(s8 ch) {
+  u16 *videoMemory = (u16*) VIDEO_LOCATION;
+  u16 *videoMemoryLocation;
 
   if(ch == '\n') {
     cursorX = 0;
@@ -39,8 +39,8 @@ void monitorPrintChar(char ch) {
 }
 
 void monitorClear() {
-  unsigned int i;
-  unsigned short *videoMemory = (unsigned short*) VIDEO_LOCATION;
+  u16 i;
+  u16 *videoMemory = (unsigned short*) VIDEO_LOCATION;
 
   for(i = 0; i < SIZE; i++) {
     videoMemory[i] = SPACE;
@@ -51,20 +51,20 @@ void monitorClear() {
   updateCursorPosition();
 }
 
-void monitorWrite(char *str) {
-  unsigned int i = 0;
+void monitorWrite(s8 *str) {
+  u16 i = 0;
   while(str[i] != 0) {
     monitorPrintChar(str[i++]);
   }
 }
 
-void monitorPrint(char *str) {
+void monitorPrint(s8 *str) {
   monitorWrite(str);
   monitorPrintChar('\n');
 }
 
-void monitorPrintCenter(char *str) {
-  unsigned int len = length(str);
+void monitorPrintCenter(s8 *str) {
+  u32 len = length(str);
   cursorX = (MAX_COLS / 2) - len;
   cursorY = (MAX_ROWS / 2) - 1;
   monitorWrite(str);
