@@ -17,6 +17,28 @@ void updateCursorPosition() {
   portByteOut(SCREEN_DATA_PORT, cursorPosition);
 }
 
+void monitorPrintChar(char ch) {
+  unsigned short *videoMemory = (unsigned short*) VIDEO_LOCATION;
+  unsigned short *videoMemoryLocation;
+
+  if(ch == '\n') {
+    cursorX = 0;
+    cursorY++;
+  } else {
+    videoMemoryLocation = videoMemory + (cursorY * MAX_COLS + cursorX);
+    *videoMemoryLocation = (ch) | ((0 << 4) | (15 & 0x0F) << 8);
+  }
+
+  cursorX++;
+
+  if(cursorX >= MAX_COLS) {
+    cursorX = 0;
+    cursorY++;
+  }
+
+  updateCursorPosition();
+}
+
 void monitorClear() {
   int i;
   unsigned short *videoMemory = (unsigned short*) VIDEO_LOCATION;
@@ -27,17 +49,6 @@ void monitorClear() {
 
   cursorX = 0;
   cursorY = 0;
-  updateCursorPosition();
-}
-
-void monitorPrintChar(char ch) {
-  unsigned short *videoMemory = (unsigned short*) VIDEO_LOCATION;
-  unsigned short *videoMemoryLocation;
-
-  videoMemoryLocation = videoMemory + (cursorY * MAX_COLS + cursorX);
-  *videoMemoryLocation = (ch) | ((0 << 4) | (15 & 0x0F) << 8);
-
-  cursorX++;
   updateCursorPosition();
 }
 

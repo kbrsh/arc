@@ -3,5 +3,5 @@
 
 void _start() {
   monitorClear();
-  monitorPrint("Ample OS");
+  monitorPrint("Ample");
 }

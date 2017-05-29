@@ -39,7 +39,7 @@ boot:
 [bits 16]
 load:
   mov bx, kernelOffset
-  mov dh, 1
+  mov dh, 7
   mov dl, [bootDrive]
   call loadDisk
 

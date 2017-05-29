@@ -2,13 +2,13 @@
 /usr/local/bin/nasm -f bin boot/boot.asm -o boot/boot.bin
 
 # Compile Kernel
-i386-elf-gcc -ffreestanding -c kernel/kernel.c -o kernel/kernel.o
-i386-elf-gcc -ffreestanding -c util/util.c -o util/util.o
+i386-elf-gcc -Wall -ffreestanding -c kernel/kernel.c -o kernel/kernel.o
+i386-elf-gcc -Wall -ffreestanding -c util/util.c -o util/util.o
 for driverDirectory in drivers/* ; do
     for file in $driverDirectory/* ; do
       if [ ${file: -2} == ".c" ]
       then
-        i386-elf-gcc -ffreestanding -c $file -o ${file:0:${#file}-2 }.o
+        i386-elf-gcc -Wall -ffreestanding -c $file -o ${file:0:${#file}-2 }.o
       fi
     done
 done
