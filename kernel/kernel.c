@@ -1,9 +1,9 @@
 #include "kernel.h"
-#include "../drivers/monitor/monitor.h"
+#include <ample/print.h>
 
 void _start() {
-  monitorClear();
-  monitorPrintCenter("Ample");
-  monitorClear();
-  monitorPrint("Ample");
+  clear();
+  printkCenter("Ample");
+  clear();
+  printk("Ample");
 }
