@@ -6,11 +6,11 @@ u16 *videoMemory = (unsigned short*) VIDEO_LOCATION;
 u8 cursorX = 0;
 u8 cursorY = 0;
 
-void scrollToBottom() {
+void scrollToBottom(void) {
 
 }
 
-void updateCursorPosition() {
+void updateCursorPosition(void) {
   u16 cursorPosition = cursorY * MAX_COLS + cursorX;
   portByteOut(SCREEN_CONTROL_PORT, 14);
   portByteOut(SCREEN_DATA_PORT, cursorPosition >> 8);
@@ -39,7 +39,7 @@ void monitorPrintChar(s8 ch) {
   updateCursorPosition();
 }
 
-void monitorClear() {
+void monitorClear(void) {
   u16 i;
   u16 *videoMemory = (unsigned short*) VIDEO_LOCATION;
 

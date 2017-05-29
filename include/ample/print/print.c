@@ -1,7 +1,7 @@
 #include "../print.h"
 #include "../../../drivers/monitor/monitor.h"
 
-void clear() {
+void clear(void) {
   monitorClear();
 }
 

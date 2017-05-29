@@ -3,7 +3,7 @@
 
 #include "../../util/util.h"
 
-void clear();
+void clear(void);
 
 void printk(s8 *fmt);
 
