@@ -1,4 +1,5 @@
 #include "monitor.h"
+#include "../port/port.h"
 #include <ample/string.h>
 
 u16 *videoMemory = (unsigned short*) VIDEO_LOCATION;
