@@ -1,14 +1,5 @@
 #include "util.h"
 
-u32 length(s8 *str) {
-  u32 i = 0;
-  u32 len = 0;
-  while(str[i++] != 0) {
-    len++;
-  }
-  return len;
-}
-
 u8 portByteIn(u16 port) {
   u8 output;
   __asm__("in %%dx, %%al" : "=a" (output) : "d" (port));

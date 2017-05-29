@@ -8,8 +8,6 @@ typedef short s16;
 typedef unsigned char u8;
 typedef char s8;
 
-u32 length(s8 *str);
-
 u8 portByteIn(u16 port);
 void portByteOut(u16 port, u8 value);
 u16 portWordIn(u16 port);

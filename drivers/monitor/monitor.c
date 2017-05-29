@@ -1,5 +1,5 @@
 #include "monitor.h"
-#include "../../util/util.h"
+#include <ample/string.h>
 
 u16 *videoMemory = (unsigned short*) VIDEO_LOCATION;
 u8 cursorX = 0;
@@ -64,7 +64,7 @@ void monitorPrint(s8 *str) {
 }
 
 void monitorPrintCenter(s8 *str) {
-  u32 len = length(str);
+  u32 len = strlen(str);
   cursorX = (MAX_COLS / 2) - len;
   cursorY = (MAX_ROWS / 2) - 1;
   monitorWrite(str);
