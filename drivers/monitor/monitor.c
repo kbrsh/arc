@@ -39,7 +39,7 @@ void monitorPrintChar(char ch) {
 }
 
 void monitorClear() {
-  int i;
+  unsigned int i;
   unsigned short *videoMemory = (unsigned short*) VIDEO_LOCATION;
 
   for(i = 0; i < SIZE; i++) {
@@ -51,10 +51,21 @@ void monitorClear() {
   updateCursorPosition();
 }
 
-void monitorPrint(char *str) {
-  int i = 0;
+void monitorWrite(char *str) {
+  unsigned int i = 0;
   while(str[i] != 0) {
     monitorPrintChar(str[i++]);
   }
+}
+
+void monitorPrint(char *str) {
+  monitorWrite(str);
   monitorPrintChar('\n');
+}
+
+void monitorPrintCenter(char *str) {
+  unsigned int len = length(str);
+  cursorX = (MAX_COLS / 2) - len;
+  cursorY = (MAX_ROWS / 2) - 1;
+  monitorWrite(str);
 }

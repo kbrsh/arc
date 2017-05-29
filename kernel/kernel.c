@@ -3,5 +3,7 @@
 
 void _start() {
   monitorClear();
+  monitorPrintCenter("Ample");
+  monitorClear();
   monitorPrint("Ample");
 }

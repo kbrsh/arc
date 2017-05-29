@@ -11,8 +11,9 @@
 #define SCREEN_CONTROL_PORT 0x3d4
 #define SCREEN_DATA_PORT 0x3d5
 
-void monitorPrint(char *ch);
-
 void monitorClear();
+void monitorWrite(char *ch);
+void monitorPrint(char *ch);
+void monitorPrintCenter(char *ch);
 
 #endif

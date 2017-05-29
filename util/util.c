@@ -1,5 +1,14 @@
 #include "util.h"
 
+unsigned int length(char *str) {
+  unsigned int i = 0;
+  unsigned int len = 0;
+  while(str[i++] != 0) {
+    len++;
+  }
+  return len;
+}
+
 unsigned char portByteIn(unsigned short port) {
   unsigned char output;
   __asm__("in %%dx, %%al" : "=a" (output) : "d" (port));
