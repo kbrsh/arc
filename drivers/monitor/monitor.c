@@ -27,7 +27,7 @@ void monitorPrintChar(s8 ch) {
     cursorY++;
   } else {
     videoMemoryLocation = videoMemory + (cursorY * MAX_COLS + cursorX);
-    *videoMemoryLocation = (ch) | ((0 << 4) | (15 & 0x0F) << 8);
+    *videoMemoryLocation = ch | 3840;
     cursorX++;
   }
 
