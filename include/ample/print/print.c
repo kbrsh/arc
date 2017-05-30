@@ -5,15 +5,15 @@ void clear(void) {
   monitorClear();
 }
 
-void writek(s8 *fmt) {
-  monitorWrite(fmt);
+void writek(s8 *str) {
+  monitorWrite(str);
 }
 
-void printk(s8 *fmt) {
-  monitorWrite(fmt);
+void printk(s8 *str) {
+  monitorWrite(str);
   monitorWriteChar('\n');
 }
 
-void printkCenter(s8 *fmt) {
-  monitorPrintCenter(fmt);
+void printkCenter(s8 *str) {
+  monitorPrintCenter(str);
 }

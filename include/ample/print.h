@@ -5,10 +5,10 @@
 
 void clear(void);
 
-void writek(s8 *fmt);
+void writek(s8 *str);
 
-void printk(s8 *fmt);
+void printk(s8 *str);
 
-void printkCenter(s8 *fmt);
+void printkCenter(s8 *str);
 
 #endif
