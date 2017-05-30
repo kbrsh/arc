@@ -9,10 +9,6 @@ void scrollToBottom(void) {
 
 }
 
-// int getVideoMemoryLocation(void) {
-//   // returnvideoMemory
-// }
-
 void updateCursorPosition(void) {
   u16 cursorPosition = cursorY * MAX_COLS + cursorX;
   portByteOut(SCREEN_CONTROL_PORT, 14);
