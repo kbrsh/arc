@@ -22,13 +22,18 @@ void monitorPrintChar(s8 ch) {
   u16 *videoMemory = (u16*) VIDEO_LOCATION;
   u16 *videoMemoryLocation;
 
-  if(ch == '\n') {
-    cursorX = 0;
-    cursorY++;
-  } else {
-    videoMemoryLocation = videoMemory + (cursorY * MAX_COLS + cursorX);
-    *videoMemoryLocation = ch | 3840;
-    cursorX++;
+  switch (ch) {
+    case '\n':
+      cursorX = 0;
+      cursorY++;
+      break;
+    case '\r':
+      cursorX = 0;
+      break;
+    default:
+      videoMemoryLocation = videoMemory + (cursorY * MAX_COLS + cursorX);
+      *videoMemoryLocation = ch | 3840;
+      cursorX++;
   }
 
   if(cursorX >= MAX_COLS) {
