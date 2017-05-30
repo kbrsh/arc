@@ -2,13 +2,16 @@
 #include "../port/port.h"
 #include <ample/string.h>
 
-u16 *videoMemory = (unsigned short*) VIDEO_LOCATION;
 u8 cursorX = 0;
 u8 cursorY = 0;
 
 void scrollToBottom(void) {
 
 }
+
+// int getVideoMemoryLocation(void) {
+//   // returnvideoMemory
+// }
 
 void updateCursorPosition(void) {
   u16 cursorPosition = cursorY * MAX_COLS + cursorX;
@@ -18,14 +21,17 @@ void updateCursorPosition(void) {
   portByteOut(SCREEN_DATA_PORT, cursorPosition);
 }
 
-void monitorPrintChar(s8 ch) {
-  u16 *videoMemory = (u16*) VIDEO_LOCATION;
+void monitorWriteChar(s8 ch) {
+  u16 *videoMemory = (u16*)VIDEO_LOCATION;
   u16 *videoMemoryLocation;
 
   switch (ch) {
     case '\n':
       cursorX = 0;
       cursorY++;
+      break;
+    case '\t':
+      cursorX += 2;
       break;
     case '\r':
       cursorX = 0;
@@ -45,8 +51,8 @@ void monitorPrintChar(s8 ch) {
 }
 
 void monitorClear(void) {
+  u16 *videoMemory = (u16*)VIDEO_LOCATION;
   u16 i;
-  u16 *videoMemory = (unsigned short*) VIDEO_LOCATION;
 
   for(i = 0; i < SIZE; i++) {
     videoMemory[i] = SPACE;
@@ -60,13 +66,8 @@ void monitorClear(void) {
 void monitorWrite(s8 *str) {
   u16 i = 0;
   while(str[i] != 0) {
-    monitorPrintChar(str[i++]);
+    monitorWriteChar(str[i++]);
   }
-}
-
-void monitorPrint(s8 *str) {
-  monitorWrite(str);
-  monitorPrintChar('\n');
 }
 
 void monitorPrintCenter(s8 *str) {
