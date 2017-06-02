@@ -10,6 +10,6 @@ typedef struct {
 
 #define va_start(list, ref) list.cur = &ref; list.offset = 1;
 
-#define va_arg(list, type) *(&(*(type*)list.cur) + list.offset++);
+#define va_arg(list, type) *(type*)(&(*(typeof(list.cur)*)list.cur) + list.offset++);
 
 #endif

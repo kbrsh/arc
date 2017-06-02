@@ -3,4 +3,6 @@
 
 #include "../../util/util.h"
 
+void malloc(u32 size);
+
 #endif
