@@ -18,6 +18,7 @@ void _sprintf(s8 *buf, const s8 *str, ...) {
           buf[i] = va_arg(list, s8);
           break;
       }
+      i++;
     } else {
       buf[i] = str[i];
     }
