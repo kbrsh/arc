@@ -1,6 +1,6 @@
 #include "monitor.h"
 #include "../port/port.h"
-#include <ample/string.h>
+#include <lib/string.h>
 
 u8 cursorX = 0;
 u8 cursorY = 0;

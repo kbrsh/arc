@@ -1,7 +1,7 @@
 #ifndef STDARG_H
 #define STDARG_H
 
-#include "../../util/util.h"
+#include <util/types.h>
 
 typedef struct {
   void *cur;

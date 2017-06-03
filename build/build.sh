@@ -32,8 +32,9 @@ function compileAll {
 # Compile Kernel
 /usr/local/bin/nasm -f elf wrapper/wrapper.asm -o wrapper/wrapper.o
 compileAll drivers
+compileAll include/util
+compileAll include/lib
 compileAll include/ample
-compileAll util
 compileAll kernel
 i386-elf-ld -o kernel/kernel.bin -Ttext 0x1000 $OBJECTFILES --oformat binary
 

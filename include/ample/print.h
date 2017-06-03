@@ -1,8 +1,8 @@
 #ifndef PRINT_H
 #define PRINT_H
 
-#include "../../util/util.h"
-#include <ample/stdio.h>
+#include <util/types.h>
+#include <lib/stdio.h>
 
 void clear(void);
 

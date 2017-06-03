@@ -1,7 +1,7 @@
 #ifndef MONITOR_H
 #define MONITOR_H
 
-#include "../../util/util.h"
+#include <util/types.h>
 
 #define VIDEO_LOCATION 0xb8000
 #define MAX_ROWS 25

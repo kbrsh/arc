@@ -1,7 +1,7 @@
 #ifndef STDIO_H
 #define STDIO_H
 
-#include "../../util/util.h"
+#include <util/types.h>
 
 #define calcf(str, ...) _calcf(str, ##__VA_ARGS__)
 u32 _calcf(const s8 *str, ...);

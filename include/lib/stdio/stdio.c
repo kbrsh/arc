@@ -1,6 +1,6 @@
 #include "../stdio.h"
-#include <ample/string.h>
-#include <ample/stdarg.h>
+#include <lib/string.h>
+#include <lib/stdarg.h>
 
 u32 _calcf(const s8 *str, ...) {
   u32 i = 0; // Current position in string

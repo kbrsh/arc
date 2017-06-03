@@ -1,7 +1,7 @@
 #ifndef STDLIB_H
 #define STDLIB_H
 
-#include "../../util/util.h"
+#include <util/types.h>
 
 void malloc(u32 size);
 
