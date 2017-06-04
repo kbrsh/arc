@@ -1,5 +1,6 @@
 #include "kernel.h"
 #include <ample/print.h>
+#include <lib/stdio.h>
 
 void _start(void) {
   clear();
