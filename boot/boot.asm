@@ -30,7 +30,7 @@ boot:
 %include "boot/switch.asm"
 
 ; Load GDT
-%include "boot/gdt.asm"
+%include "boot/gdt32.asm"
 
 ; Load 32 bit printing utility
 %include "boot/print.asm"
