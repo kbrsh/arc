@@ -11,6 +11,6 @@ u32 intlen(u32 num) {
   return length;
 }
 
-void malloc(u32 size) {
-
+void* malloc(u32 size) {
+  return (void*)(0x00000f);
 }
