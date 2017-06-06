@@ -19,10 +19,8 @@ GDT32:
 	  db 11001111b
 	  db 0
 
-  .End:
-
   .Pointer:
-    dw GDT32.End - GDT32.Null - 1
+    dw $ - GDT32.Null - 1
     dd GDT32.Null
 
   .codeSeg equ GDT32.Code - GDT32.Null
