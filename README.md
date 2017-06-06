@@ -31,3 +31,11 @@ Minimalistic Kernel for Learning
     - [ ] Virtual File System (VFS)
     - [ ] Stdin
     - [ ] Stdout
+  - [ ] Console Interface
+    - [ ] Commands
+      - [ ] `pwd`
+      - [ ] `ls`
+      - [ ] `cd`
+      - [ ] `mkdir`
+      - [ ] `touch`
+      - [ ] `cat`
