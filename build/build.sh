@@ -38,5 +38,25 @@ compileAll include/ample
 compileAll kernel
 i386-elf-ld -o kernel/kernel.bin -Ttext 0x1000 $OBJECTFILES --oformat binary
 
-# Create Image
+# Compile into one file
 cat boot/boot.bin kernel/kernel.bin > dist/ample
+
+# Cleanup old files
+rm -f dist/ample.iso
+
+# Put onto floppy image
+# dd if=/dev/zero of=dist/ample.img bs=1024 count=1440
+# dd if=./dist/ample of=dist/ample.img seek=0 conv=notrunc
+
+# Remove binary file
+# rm -rf dist/ample
+
+# Create temporary iso directory and move image to it
+# mkdir dist/iso
+# mv dist/ample.img dist/iso
+
+# Create ISO
+# mkisofs -quiet -V 'AMPLE' -o dist/ample.iso -b ample.img -hide ample.img dist/iso
+
+# Remove temporary iso directory
+# rm -rf dist/iso

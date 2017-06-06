@@ -80,5 +80,17 @@ switch32:
 
 [bits 64]
 switch64:
+  cli
+  mov ax, GDT64.dataSeg
+  mov ds, ax
+  mov es, ax
+  mov fs, ax
+  mov gs, ax
+  mov ss, ax
+  mov edi, 0xB8000
+  mov rax, 0x1F201F201F201F20
+  mov ecx, 500
+  rep stosq
+  hlt
   ; After switching to 64 bit long mode, return to main loader and load kernel
-  call afterSwitch
+  ; call afterSwitch

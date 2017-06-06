@@ -64,7 +64,7 @@ intro db "Ample", 0
 ; Boot Drive Location
 bootDrive db 0
 
-times 510-($-$$) db 0 ; Skip over 510 Bytes
+times 510 - ($ - $$) db 0 ; Skip over 510 Bytes
 dw 0xaa55 ; Let BIOS know disk is Bootable
 
 ; Load page tables

@@ -7,7 +7,7 @@ Minimalistic Kernel for Learning
 - [x] Bootloader
   - [x] Real Mode
   - [x] Protected Mode
-  - [x] Long Mode
+  - [ ] Long Mode
   - [x] Give control to Kernel
 - [ ] Includes
   - [x] Ample
