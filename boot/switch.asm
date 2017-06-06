@@ -29,8 +29,11 @@ switch32:
   mov ebp, 0x9000
   mov esp, ebp
 
-  ; mov eax, cr4
-  ; or eax, 1 << 5
-  ; mov cr4, eax
+  ; Begin Switching to 64 bits
+
+  ; Setup PAE
+  mov eax, cr4
+  or eax, 1 << 5
+  mov cr4, eax
 
   call afterSwitch
