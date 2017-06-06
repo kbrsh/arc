@@ -49,7 +49,7 @@ load:
   ret
 
 ; After Switching to Long Mode
-[bits 32]
+[bits 64]
 afterSwitch:
   mov ebx, intro ; Store Message
   call print ; Print Message

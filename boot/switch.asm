@@ -30,20 +30,20 @@ switch32:
   mov esp, ebp
 
   ; Begin Switching to 64 bits
-  call afterSwitch
+
   ; Setup PAE
-;   mov eax, cr4
-;   or eax, 1 << 5
-;   mov cr4, eax
-;
-;   ; Setup PG and PM bits
-;   mov eax, cr0
-;   or eax, 1 << 31 | 1 << 0
-;   mov cr0, eax
-;
-;   jmp GDT64.codeSeg:switch64 ; Perform far jump
-;
-; [bits 64]
-; switch64:
-;   ; After switching to 64 bit long mode, return to main loader and load kernel
-;   call afterSwitch
+  mov eax, cr4
+  or eax, 1 << 5
+  mov cr4, eax
+
+  ; Setup PG and PM bits
+  mov eax, cr0
+  or eax, 1 << 31 | 1 << 0
+  mov cr0, eax
+
+  jmp GDT64.codeSeg:switch64 ; Perform far jump
+
+[bits 64]
+switch64:
+  ; After switching to 64 bit long mode, return to main loader and load kernel
+  call afterSwitch
