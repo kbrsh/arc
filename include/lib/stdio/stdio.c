@@ -1,8 +1,6 @@
 #include "../stdio.h"
-#include <lib/string.h>
 #include <lib/stdarg.h>
 #include <lib/stdlib.h>
-#include <ample/print.h>
 
 u32 _calcf(const s8 *str, ...) {
   va_list list;
