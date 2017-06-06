@@ -5,26 +5,26 @@ Minimalistic Kernel for Learning
 ### Todo
 
 - [ ] Bootloader
-  - [ ] Real Mode
-  - [ ] Protected Mode
+  - [x] Real Mode
+  - [x] Protected Mode
   - [ ] Long Mode
-  - [ ] Give control to Kernel
+  - [x] Give control to Kernel
 - [ ] Includes
-  - [ ] Ample
-    - [ ] Printing Utilities (`<ample/print.h>` - `printk`)
+  - [x] Ample
+    - [x] Printing Utilities (`<ample/print.h>` - `printk`)
   - [ ] LibC
-    - [ ] Stdio
-      - [ ] `sprintf` - format string
+    - [x] Stdio
+      - [x] `sprintf` - format string
     - [ ] Stdlib
       - [ ] `malloc` - allocate memory
       - [ ] `free` - free memory
     - [ ] String
-      - [ ] `strlen` - give length of a string
-    - [ ] Stdarg
-      - [ ] Variadic Functions (`va_start`, `va_arg`)
+      - [x] `strlen` - give length of a string
+    - [x] Stdarg
+      - [x] Variadic Functions (`va_start`, `va_arg`)
 - [ ] Kernel
   - [ ] Basic console
-    - [ ] Logs
+    - [x] Logs
     - [ ] Initialize keyboard input
   - [ ] User Mode
     - [ ] Switch to user mode
