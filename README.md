@@ -16,7 +16,7 @@ Minimalistic Kernel for Learning
     - [x] Stdio
       - [x] `sprintf` - format string
     - [ ] Stdlib
-      - [ ] `intlen` - return length of an integer
+      - [x] `intlen` - return length of an integer
       - [ ] `malloc` - allocate memory
       - [ ] `free` - free memory
     - [ ] String
