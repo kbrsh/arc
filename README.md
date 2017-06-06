@@ -4,10 +4,10 @@ Minimalistic Kernel for Learning
 
 ### Todo
 
-- [ ] Bootloader
+- [x] Bootloader
   - [x] Real Mode
   - [x] Protected Mode
-  - [ ] Long Mode
+  - [x] Long Mode
   - [x] Give control to Kernel
 - [ ] Includes
   - [x] Ample
