@@ -23,5 +23,5 @@ GDT32:
     dw $ - GDT32.Null - 1
     dd GDT32.Null
 
-  .codeSeg equ GDT32.Code - GDT32.Null
-  .dataSeg equ GDT32.Data - GDT32.Null
+  .codeSeg: equ GDT32.Code - GDT32.Null
+  .dataSeg: equ GDT32.Data - GDT32.Null

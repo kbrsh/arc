@@ -29,8 +29,11 @@ boot:
 ; Load Switcher to Protected Mode
 %include "boot/switch.asm"
 
-; Load GDT
+; Load 32 bit GDT
 %include "boot/gdt32.asm"
+
+; Load 64 bit GDT
+%include "boot/gdt64.asm"
 
 ; Load 32 bit printing utility
 %include "boot/print.asm"
@@ -45,13 +48,13 @@ load:
 
   ret
 
-; After Switching to Protected Mode
-[bits 32]
+; After Switching to Long Mode
+[bits 64]
 afterSwitch:
   mov ebx, intro ; Store Message
   call print ; Print Message
 
-  call kernelOffset
+  call kernelOffset ; Call Kernel
 
   jmp $ ; Loop
 
