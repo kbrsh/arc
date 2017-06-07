@@ -1,13 +1,13 @@
 #include "kernel.h"
 #include "../drivers/monitor/monitor.h"
-#include <ample/print.h>
+#include <arc/print.h>
 
 void _start(void) {
   monitorClear();
-  // printkCenter("Ample");
+  // printkCenter("Arc");
   // clear();
   // printk("\n");
-  // printk("Ample");
+  // printk("Arc");
   // printk("\n\n");
   // writek(">\t");
 }

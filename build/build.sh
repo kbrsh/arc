@@ -34,29 +34,29 @@ function compileAll {
 compileAll drivers
 compileAll include/util
 compileAll include/lib
-compileAll include/ample
+compileAll include/arc
 compileAll kernel
 i386-elf-ld -o kernel/kernel.bin -Ttext 0x1000 $OBJECTFILES --oformat binary
 
 # Compile into one file
-cat boot/boot.bin kernel/kernel.bin > dist/ample
+cat boot/boot.bin kernel/kernel.bin > dist/arc
 
 # Cleanup old files
-rm -f dist/ample.iso
+rm -f dist/arc.iso
 
 # Put onto floppy image
-dd if=/dev/zero of=dist/ample.img bs=1024 count=1440
-dd if=./dist/ample of=dist/ample.img seek=0 conv=notrunc
+dd if=/dev/zero of=dist/arc.img bs=1024 count=1440
+dd if=./dist/arc of=dist/arc.img seek=0 conv=notrunc
 
 # Remove binary file
-rm -rf dist/ample
+rm -rf dist/arc
 
 # Create temporary iso directory and move image to it
 mkdir dist/iso
-mv dist/ample.img dist/iso
+mv dist/arc.img dist/iso
 
 # Create ISO
-mkisofs -quiet -V 'AMPLE' -o dist/ample.iso -b ample.img -hide ample.img dist/iso
+mkisofs -quiet -V 'ARC' -o dist/arc.iso -b arc.img -hide arc.img dist/iso
 
 # Remove temporary iso directory
 rm -rf dist/iso
