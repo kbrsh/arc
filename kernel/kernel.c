@@ -4,6 +4,7 @@
 
 void _start(void) {
   monitorClear();
+  // clear();
   // printkCenter("Arc");
   // clear();
   // printk("\n");

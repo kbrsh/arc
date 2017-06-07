@@ -10,8 +10,7 @@ void scrollToBottom(void) {
 }
 
 void updateCursorPosition(void) {
-  // u16 cursorPosition = cursorY * MAX_COLS + cursorX;
-  u16 cursorPosition = 0;
+  u16 cursorPosition = cursorY * MAX_COLS + cursorX;
   portByteOut(0x3D4, 14);
   portByteOut(0x3D5, cursorPosition);
   portByteOut(0x3D5, 15);
@@ -52,10 +51,10 @@ void monitorClear(void) {
   for(i = 0; i < SIZE; ++i) {
     videoMemory[i] = 0x20 | 3840;
   }
-  // cursorX++;
-  // cursorX = 0;
-  // cursorY = 0;
-  // updateCursorPosition();
+
+  cursorX = 0;
+  cursorY = 0;
+  updateCursorPosition();
 }
 
 void monitorWrite(s8 *str) {
