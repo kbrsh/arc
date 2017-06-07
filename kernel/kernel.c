@@ -1,5 +1,4 @@
 #include "kernel.h"
-#include "../drivers/monitor/monitor.h"
 #include <arc/print.h>
 
 void _start(void) {
