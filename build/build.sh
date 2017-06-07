@@ -9,7 +9,7 @@ function compile {
 
   if [ $EXTENSION == ".c" ]
   then
-    i386-elf-gcc -Wall -ffreestanding -c $FILE -o $NEWFILE -I include
+    x86_64-elf-gcc -Wall -ffreestanding -mcmodel=large -mno-red-zone -mno-mmx -mno-sse -mno-sse2 -c $FILE -o $NEWFILE -I include
   elif [ $EXTENSION == ".asm" ]
   then
     /usr/local/bin/nasm -f elf $FILE -o $NEWFILE
@@ -36,7 +36,7 @@ compileAll include/util
 compileAll include/lib
 compileAll include/arc
 compileAll kernel
-i386-elf-ld -o kernel/kernel.bin -Ttext 0x10000 $OBJECTFILES --oformat binary
+x86_64-elf-ld -o kernel/kernel.bin -Ttext 0x10000 $OBJECTFILES --oformat binary
 
 # Compile into one file
 cat boot/boot.bin kernel/kernel.bin > dist/arc
