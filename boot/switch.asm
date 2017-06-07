@@ -44,7 +44,7 @@ switch:
 
   ; Enable Paging
   mov eax, cr0
-  or eax, 1 << 31 | 1 << 0
+  or eax, 1 << 31 | 1
   mov cr0, eax
 
   lgdt [GDT.Pointer] ; Load GDT
