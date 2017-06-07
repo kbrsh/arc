@@ -1,4 +1,4 @@
-# Ample
+# Arc
 
 Minimalistic Kernel for Learning
 
@@ -11,7 +11,7 @@ Minimalistic Kernel for Learning
   - [x] Give control to Kernel
 - [ ] Includes
   - [x] Ample
-    - [x] Printing Utilities (`<ample/print.h>` - `printk`)
+    - [x] Printing Utilities (`<arc/print.h>` - `printk`)
   - [ ] LibC
     - [x] Stdio
       - [x] `sprintf` - format string
