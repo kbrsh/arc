@@ -26,43 +26,41 @@ switch32:
   mov gs, ax
 
   ; Setup 32 bit stack
-  mov ebp, 0x9000
+  mov ebp, 0x11000
   mov esp, ebp
 
   ; Begin Switching to 64 bits
 
-  ; Setup paging table
+  ; Setup paging tables
+  fill:
+    mov dword [0x00010000 + ecx], 0x11000
+    or dword [0x00010000 + ecx], 111b
+    mov dword [0x00010000 + ecx + 4], 0
+    mov dword [0x11000 + ecx], 0x12000
+    or dword [0x11000 + ecx], 111b
+    mov dword [0x11000 + ecx + 4], 0
+    mov dword [0x12000 + ecx], 0x13000
+    or dword [0x12000 + ecx], 111b
+    mov dword [0x12000 + ecx + 4], 0
 
-  ; Point first section of PDP to PML4
-  mov eax, PDP
-  or eax, 0b11
-  mov dword [PML4], eax
-
-  ; Point first section of PD to PDP
-  mov eax, PD
-  or eax, 0b11
-  mov dword [PDP], eax
-
-  ; Loop and fill table
-  mov ecx, 0
-  fillPageTable:
-    mov eax, 0x200000
+    mov eax, (4096/8)
     mul ecx
-    or eax, 0b10000011
-    mov [PD + ecx * 8], eax
+    mov dword [0x13000 + ecx], eax
+    or dword [0x13000 + ecx], 111b
+    mov dword [0x13000 + ecx + 4], 0
 
-    inc ecx
-    cmp ecx, 512
-    jne fillPageTable
-
-  ; Use page table in control register
-  mov eax, PML4
-  mov cr3, eax
+    add ecx, 8
+    cmp ecx, 4096
+    jl fill
 
   ; Setup PAE
   mov eax, cr4
   or eax, 1 << 5
   mov cr4, eax
+
+  ; Use page table in control register
+  mov eax, 0x00010000
+  mov cr3, eax
 
   ; Setup Long Mode bit in EFER MSR
   mov ecx, 0xC0000080
@@ -75,22 +73,19 @@ switch32:
   or eax, 1 << 31
   mov cr0, eax
 
-  lgdt [GDT64.Pointer]
+  lgdt [GDT64.Pointer] ; Load GDT
   jmp GDT64.codeSeg:switch64 ; Perform far jump
 
 [bits 64]
 switch64:
-  cli
+  ; Update registers
   mov ax, GDT64.dataSeg
   mov ds, ax
   mov es, ax
+  mov ss, ax
   mov fs, ax
   mov gs, ax
   mov ss, ax
-  mov edi, 0xB8000
-  mov rax, 0x1F201F201F201F20
-  mov ecx, 500
-  rep stosq
-  hlt
+
   ; After switching to 64 bit long mode, return to main loader and load kernel
-  ; call afterSwitch
+  call afterSwitch

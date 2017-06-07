@@ -8,11 +8,12 @@
 #define MAX_COLS 80
 #define SIZE 25 * 80
 
-#define SPACE 3872
+#define SPACE *" "
 
 #define SCREEN_CONTROL_PORT 0x3d4
 #define SCREEN_DATA_PORT 0x3d5
 
+void monitorInit(void);
 void monitorClear(void);
 void monitorWriteChar(s8 ch);
 void monitorWrite(s8 *ch);

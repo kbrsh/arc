@@ -8,7 +8,7 @@ boot:
   mov [bootDrive], dl ; Setup Boot Drive Location
 
   ; Setup stack
-  mov bp, 0x9000
+  mov bp, 0x1000
   mov sp, bp
 
   mov bx, intro ; Store Message in "Base Index" Register
@@ -35,14 +35,11 @@ boot:
 ; Load 64 bit GDT
 %include "boot/gdt64.asm"
 
-; Load 32 bit printing utility
-%include "boot/print.asm"
-
 ; Load Kernel
 [bits 16]
 load:
   mov bx, kernelOffset
-  mov dh, 7
+  mov dh, 30
   mov dl, [bootDrive]
   call loadDisk
 
@@ -51,12 +48,9 @@ load:
 ; After Switching to Long Mode
 [bits 64]
 afterSwitch:
-  mov ebx, intro ; Store Message
-  call print ; Print Message
-
   call kernelOffset ; Call Kernel
 
-  jmp $ ; Loop
+  hlt ; Halt CPU
 
 ; Intro Message
 intro db "Ample", 0
@@ -66,6 +60,3 @@ bootDrive db 0
 
 times 510 - ($ - $$) db 0 ; Skip over 510 Bytes
 dw 0xaa55 ; Let BIOS know disk is Bootable
-
-; Load page tables
-%include "boot/pageTables.asm"

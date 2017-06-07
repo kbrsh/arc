@@ -13,8 +13,8 @@ GDT32:
 
   .Data:
     dw 0xffff
-    dw 0x0
-    db 0x0
+    dw 0
+    db 0
     db 0x92
 	  db 11001111b
 	  db 0
