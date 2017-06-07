@@ -3,8 +3,8 @@
 #include <arc/print.h>
 
 void _start(void) {
-  monitorClear();
-  // clear();
+  clear();
+  monitorWriteChar('a');
   // printkCenter("Arc");
   // clear();
   // printk("\n");

@@ -12,9 +12,9 @@ void scrollToBottom(void) {
 void updateCursorPosition(void) {
   u16 cursorPosition = cursorY * MAX_COLS + cursorX;
   portByteOut(0x3D4, 14);
-  portByteOut(0x3D5, cursorPosition);
-  portByteOut(0x3D5, 15);
   portByteOut(0x3D5, cursorPosition >> 8);
+  portByteOut(0x3D4, 15);
+  portByteOut(0x3D5, cursorPosition);
 }
 
 void monitorWriteChar(s8 ch) {
