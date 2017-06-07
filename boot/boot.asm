@@ -28,7 +28,7 @@ boot:
 %include "boot/switch.asm"
 
 ; Load 64 bit GDT
-%include "boot/gdt64.asm"
+%include "boot/gdt.asm"
 
 ; Load Kernel
 [bits 16]

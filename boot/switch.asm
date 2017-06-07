@@ -47,14 +47,14 @@ switch:
   or eax, 1 << 31 | 1 << 0
   mov cr0, eax
 
-  lgdt [GDT64.Pointer] ; Load GDT
-  jmp GDT64.codeSeg:switch64 ; Perform far jump
+  lgdt [GDT.Pointer] ; Load GDT
+  jmp GDT.codeSeg:switch64 ; Perform far jump
 
 
 [bits 64]
 switch64:
   ; Update registers
-  mov ax, GDT64.dataSeg
+  mov ax, GDT.dataSeg
   mov ds, ax
   mov es, ax
   mov ss, ax
