@@ -1,53 +1,27 @@
 ; Stay in 16 bits
 [bits 16]
 
-; Initialize Switch
+; Initialize Switch to 64 bit long mode
 switch:
   cli ; Disable Interrupts
 
-  lgdt [GDT32.Pointer] ; Load GDT
-
-  ; Setup control register 0 to enable protected mode
-  mov eax, cr0
-  or eax, 1
-  mov cr0, eax
-
-  jmp GDT32.codeSeg:switch32 ; Jump to Switcher in 32 Bits
-
-; 32 Bit Switch Section
-[bits 32]
-switch32:
-  ; Load registers
-  mov ax, GDT32.dataSeg
-  mov ds, ax
-  mov ss, ax
-  mov es, ax
-  mov fs, ax
-  mov gs, ax
-
-  ; Setup 32 bit stack
-  mov ebp, 0x11000
-  mov esp, ebp
-
-  ; Begin Switching to 64 bits
-
   ; Setup paging tables
   fill:
-    mov dword [0x00010000 + ecx], 0x11000
-    or dword [0x00010000 + ecx], 111b
-    mov dword [0x00010000 + ecx + 4], 0
-    mov dword [0x11000 + ecx], 0x12000
-    or dword [0x11000 + ecx], 111b
-    mov dword [0x11000 + ecx + 4], 0
-    mov dword [0x12000 + ecx], 0x13000
-    or dword [0x12000 + ecx], 111b
-    mov dword [0x12000 + ecx + 4], 0
+    mov dword [0x1000 + ecx], 0x2000
+    or dword [0x1000 + ecx], 111b
+    mov dword [0x1000 + ecx + 4], 0
+    mov dword [0x2000 + ecx], 0x3000
+    or dword [0x2000 + ecx], 111b
+    mov dword [0x2000 + ecx + 4], 0
+    mov dword [0x3000 + ecx], 0x4000
+    or dword [0x3000 + ecx], 111b
+    mov dword [0x3000 + ecx + 4], 0
 
     mov eax, (4096/8)
     mul ecx
-    mov dword [0x13000 + ecx], eax
-    or dword [0x13000 + ecx], 111b
-    mov dword [0x13000 + ecx + 4], 0
+    mov dword [0x4000 + ecx], eax
+    or dword [0x4000 + ecx], 111b
+    mov dword [0x4000 + ecx + 4], 0
 
     add ecx, 8
     cmp ecx, 4096
@@ -59,7 +33,7 @@ switch32:
   mov cr4, eax
 
   ; Use page table in control register
-  mov eax, 0x00010000
+  mov eax, 0x1000
   mov cr3, eax
 
   ; Setup Long Mode bit in EFER MSR
@@ -70,11 +44,12 @@ switch32:
 
   ; Enable Paging
   mov eax, cr0
-  or eax, 1 << 31
+  or eax, 1 << 31 | 1 << 0
   mov cr0, eax
 
   lgdt [GDT64.Pointer] ; Load GDT
   jmp GDT64.codeSeg:switch64 ; Perform far jump
+
 
 [bits 64]
 switch64:

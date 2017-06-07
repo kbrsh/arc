@@ -1,7 +1,5 @@
 [org 0x7c00]
 
-kernelOffset equ 0x1000 ; Offset to Kernel Location
-
 ; Main Boot
 [bits 16]
 boot:
@@ -29,26 +27,27 @@ boot:
 ; Load Switcher to Protected Mode
 %include "boot/switch.asm"
 
-; Load 32 bit GDT
-%include "boot/gdt32.asm"
-
 ; Load 64 bit GDT
 %include "boot/gdt64.asm"
 
 ; Load Kernel
 [bits 16]
 load:
-  mov bx, kernelOffset
-  mov dh, 30
-  mov dl, [bootDrive]
-  call loadDisk
+  ; Setup parameters to read from kernel location (0x10000)
+  mov bx, 0x1000
+  mov es, bx
+  mov bx, 0
+
+  mov dl, [bootDrive] ; Read from boot drive
+
+  call loadDisk ; Load from disk
 
   ret
 
 ; After Switching to Long Mode
 [bits 64]
 afterSwitch:
-  call kernelOffset ; Call Kernel
+  call 0x10000 ; Call Kernel
 
   hlt ; Halt CPU
 

@@ -3,11 +3,11 @@ loadDisk:
   pusha
   push dx
 
-  mov ah, 0x02
-  mov al, dh
-  mov ch, 0x00
-  mov dh, 0x00
-  mov cl, 0x02
+  mov ah, 0x02 ; Read operation
+  mov al, 7 ; Read 7 sectors
+  mov ch, 0x00 ; Read cylinder 0
+  mov dh, 0x00 ; Read head 0
+  mov cl, 0x02 ; Read from sector 2
 
   int 0x13
 

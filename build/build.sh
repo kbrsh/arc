@@ -36,7 +36,7 @@ compileAll include/util
 compileAll include/lib
 compileAll include/arc
 compileAll kernel
-i386-elf-ld -o kernel/kernel.bin -Ttext 0x1000 $OBJECTFILES --oformat binary
+i386-elf-ld -o kernel/kernel.bin -Ttext 0x10000 $OBJECTFILES --oformat binary
 
 # Compile into one file
 cat boot/boot.bin kernel/kernel.bin > dist/arc
