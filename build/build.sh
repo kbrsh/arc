@@ -30,7 +30,7 @@ function compileAll {
 /usr/local/bin/nasm -f bin boot/boot.asm -o boot/boot.bin
 
 # Compile Kernel
-/usr/local/bin/nasm -f elf wrapper/wrapper.asm -o wrapper/wrapper.o
+/usr/local/bin/nasm -f elf64 wrapper/wrapper.asm -o wrapper/wrapper.o
 compileAll drivers
 compileAll include/util
 compileAll include/lib
