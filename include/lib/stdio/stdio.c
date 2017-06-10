@@ -76,7 +76,7 @@ void _sprintf(s8 *buf, const s8 *str, ...) {
 
           while(intDigit != 0) {
             j--;
-            buf[j] = (char)(48 + (intDigit % 10));
+            buf[j] = (char)(48 + (intDigit % 10)); // Take remainder to get last digit
             intDigit /= 10;
           }
 
