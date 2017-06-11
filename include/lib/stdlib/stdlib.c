@@ -14,5 +14,6 @@ u32 intlen(u32 num) {
 }
 
 void* malloc(u32 size) {
+  // Placeholder
   return (void*)(0x00000f);
 }
