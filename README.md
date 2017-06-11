@@ -27,6 +27,13 @@ Minimalistic Kernel for Learning
   - [ ] Basic console
     - [x] Logs
     - [ ] Initialize keyboard input
+  - [ ] Interrupts
+  - [ ] Processes
+  - [ ] Scheduler
+  - [ ] System Calls
+  - [ ] Memory Allocation (`lib/stdlib.h`)
+    - [ ] `malloc`
+    - [ ] `free`
   - [ ] User Mode
     - [ ] Switch to user mode
     - [ ] Virtual File System (VFS)
@@ -40,3 +47,4 @@ Minimalistic Kernel for Learning
       - [ ] `mkdir`
       - [ ] `touch`
       - [ ] `cat`
+      - [ ] `echo`
