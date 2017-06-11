@@ -19,7 +19,7 @@ Minimalistic Kernel for Learning
       - [x] `intlen` - return length of an integer
       - [ ] `malloc` - allocate memory
       - [ ] `free` - free memory
-    - [ ] String
+    - [x] String
       - [x] `strlen` - give length of a string
     - [x] Stdarg
       - [x] Variadic Functions (`va_start`, `va_arg`)
