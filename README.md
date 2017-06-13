@@ -24,13 +24,9 @@ Minimalistic Kernel for Learning
     - [x] Stdarg
       - [x] Variadic Functions (`va_start`, `va_arg`)
 - [ ] Kernel
-  - [ ] Basic console
-    - [x] Logs
-    - [ ] Initialize keyboard input
   - [ ] Interrupts
   - [ ] Processes
   - [ ] Scheduler
-  - [ ] System Calls
   - [ ] Memory Allocation (`lib/stdlib.h`)
     - [ ] `malloc`
     - [ ] `free`
@@ -39,7 +35,10 @@ Minimalistic Kernel for Learning
     - [ ] Virtual File System (VFS)
     - [ ] Stdin
     - [ ] Stdout
+  - [ ] System Calls
   - [ ] Console Interface
+    - [x] Logs
+    - [ ] Initialize keyboard input
     - [ ] Commands
       - [ ] `pwd`
       - [ ] `ls`
