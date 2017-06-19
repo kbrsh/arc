@@ -26,6 +26,7 @@ Minimalistic Kernel for Learning
 - [ ] Kernel
   - [ ] Interrupts
   - [ ] Processes
+  - [ ] Threads
   - [ ] Scheduler
   - [ ] Memory Allocation (`lib/stdlib.h`)
     - [ ] `malloc`
@@ -36,10 +37,10 @@ Minimalistic Kernel for Learning
     - [ ] Stdin
     - [ ] Stdout
   - [ ] System Calls
-  - [ ] Console Interface
-    - [x] Logs
-    - [ ] Initialize keyboard input
-    - [ ] Commands
+- [ ] Shell (`ash`)
+  - [ ] Logs
+  - [ ] Initialize keyboard input
+  - [ ] Commands
       - [ ] `pwd`
       - [ ] `ls`
       - [ ] `cd`
