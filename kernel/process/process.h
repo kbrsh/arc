@@ -4,7 +4,7 @@
 #include <util/types.h>
 
 struct process {
-	u8 name
+	u8* name
 };
 
 #endif
