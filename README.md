@@ -48,3 +48,8 @@ Minimalistic Kernel for Learning
       - [ ] `touch`
       - [ ] `cat`
       - [ ] `echo`
+
+<!-- Also needs: GUI -->
+<!-- Also needs: Syntax for `ash` -->
+<!-- Also needs: Book -->
+<!-- Also needs: Specific Arch Support (bootloader) -->
