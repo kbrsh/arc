@@ -49,7 +49,7 @@ Minimalistic Kernel for Learning
       - [ ] `cat`
       - [ ] `echo`
 
-<!-- Also needs: GUI -->
+<!-- Also needs: GUI - Window Manager -->
 <!-- Also needs: Syntax for `ash` -->
 <!-- Also needs: Book -->
 <!-- Also needs: Specific Arch Support (bootloader) -->
