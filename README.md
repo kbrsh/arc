@@ -50,6 +50,6 @@ Minimalistic Kernel for Learning
       - [ ] `echo`
 
 <!-- Also needs: GUI - Window Manager -->
-<!-- Also needs: Syntax for `ash` -->
+<!-- Also needs: Syntax for `ash` - Based on 'sh' -->
 <!-- Also needs: Book -->
 <!-- Also needs: Specific Arch Support (bootloader) -->
