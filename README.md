@@ -27,8 +27,8 @@ Minimalistic Kernel for Learning
   - [ ] Interrupts
   - [ ] Processes
   - [ ] Threads
-  - [ ] Scheduler
-  - [ ] Memory Allocation (`lib/stdlib.h`)
+  - [ ] Scheduler - Priority Round Robin
+  - [ ] Memory Allocation (`lib/stdlib.h`)
     - [ ] `malloc`
     - [ ] `free`
   - [ ] User Mode
