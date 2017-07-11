@@ -21,8 +21,9 @@ Minimalistic Kernel for Learning
       - [ ] `free` - free memory
     - [x] String
       - [x] `strlen` - give length of a string
+      - [x] `memset` - set memory of a buffer to a value
     - [x] Stdarg
-      - [x] Variadic Functions (`va_start`, `va_arg`)
+      - [x] Variadic Functions (`va_list`, `va_start`, `va_arg`)
 - [ ] Kernel
   - [ ] Interrupts
   - [ ] Processes
