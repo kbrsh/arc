@@ -26,6 +26,7 @@ Minimalistic Kernel for Learning
       - [x] Variadic Functions (`va_list`, `va_start`, `va_arg`)
 - [ ] Kernel
   - [ ] Interrupts
+  - [ ] Virtual File System (VFS)
   - [ ] Processes
   - [ ] Threads
   - [ ] Scheduler - Priority Round Robin
@@ -34,7 +35,6 @@ Minimalistic Kernel for Learning
     - [ ] `free`
   - [ ] User Mode
     - [ ] Switch to user mode
-    - [ ] Virtual File System (VFS)
     - [ ] Stdin
     - [ ] Stdout
   - [ ] System Calls
