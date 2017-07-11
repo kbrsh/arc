@@ -1,5 +1,4 @@
 GDT:
-
   .Null:
     dq 0
 

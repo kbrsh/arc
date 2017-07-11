@@ -28,6 +28,8 @@ typedef struct {
 idtEntry_t idtHandlers[256];
 idtHandlersPointer_t idtHandlersPointer;
 
+extern void isrHandler(registers_t registers);
+
 extern void isrHandler0(void);
 extern void isrHandler1(void);
 extern void isrHandler2(void);

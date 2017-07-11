@@ -3,6 +3,7 @@
   push rcx
   push rdx
   push rbx
+  push rsp
   push rbp
   push rsi
   push rdi
@@ -12,15 +13,28 @@
   pop rdi
   pop rsi
   pop rbp
+  pop rsp
   pop rbx
   pop rdx
   pop rcx
   pop rax
 %endmacro
 
-isrHandler:
+extern isrHandler
+isrHandlerWrapper:
+  mov rcx, 10
   pushAll
+  mov ax, ds
+  push rax
+
+  call isrHandler
+
+  pop rax
+
   popAll
+  add rsp, 16
+  sti
+  iretq
 
 global loadIDT
 extern idtHandlersPointer
@@ -62,97 +76,187 @@ global isrHandler30
 global isrHandler31
 
 isrHandler0:
-  iretq
+  cli
+  push byte 0
+  push byte 0
+  jmp isrHandlerWrapper
 
 isrHandler1:
-  iretq
+  cli
+  push byte 0
+  push byte 1
+  jmp isrHandlerWrapper
 
 isrHandler2:
-  iretq
+  cli
+  push byte 0
+  push byte 2
+  jmp isrHandlerWrapper
 
 isrHandler3:
-  iretq
+  cli
+  push byte 0
+  push byte 3
+  jmp isrHandlerWrapper
 
 isrHandler4:
-  iretq
+  cli
+  push byte 0
+  push byte 4
+  jmp isrHandlerWrapper
 
 isrHandler5:
-  iretq
+  cli
+  push byte 0
+  push byte 5
+  jmp isrHandlerWrapper
 
 isrHandler6:
-  iretq
+  cli
+  push byte 0
+  push byte 6
+  jmp isrHandlerWrapper
 
 isrHandler7:
-  iretq
+  cli
+  push byte 0
+  push byte 7
+  jmp isrHandlerWrapper
 
 isrHandler8:
-  iretq
+  cli
+  push byte 8
+  jmp isrHandlerWrapper
 
 isrHandler9:
-  iretq
+  cli
+  push byte 0
+  push byte 9
+  jmp isrHandlerWrapper
 
 isrHandler10:
-  iretq
+  cli
+  push byte 10
+  jmp isrHandlerWrapper
 
 isrHandler11:
-  iretq
+  cli
+  push byte 11
+  jmp isrHandlerWrapper
 
 isrHandler12:
-  iretq
+  cli
+  push byte 12
+  jmp isrHandlerWrapper
 
 isrHandler13:
-  iretq
+  cli
+  push byte 13
+  jmp isrHandlerWrapper
 
 isrHandler14:
-  iretq
+  cli
+  push byte 14
+  jmp isrHandlerWrapper
 
 isrHandler15:
-  iretq
+  cli
+  push byte 0
+  push byte 15
+  jmp isrHandlerWrapper
 
 isrHandler16:
-  iretq
+  cli
+  push byte 0
+  push byte 16
+  jmp isrHandlerWrapper
 
 isrHandler17:
-  iretq
+  cli
+  push byte 0
+  push byte 17
+  jmp isrHandlerWrapper
 
 isrHandler18:
-  iretq
+  cli
+  push byte 0
+  push byte 18
+  jmp isrHandlerWrapper
 
 isrHandler19:
-  iretq
+  cli
+  push byte 0
+  push byte 19
+  jmp isrHandlerWrapper
 
 isrHandler20:
-  iretq
+  cli
+  push byte 0
+  push byte 20
+  jmp isrHandlerWrapper
 
 isrHandler21:
-  iretq
+  cli
+  push byte 0
+  push byte 21
+  jmp isrHandlerWrapper
 
 isrHandler22:
-  iretq
+  cli
+  push byte 0
+  push byte 22
+  jmp isrHandlerWrapper
 
 isrHandler23:
-  iretq
+  cli
+  push byte 0
+  push byte 23
+  jmp isrHandlerWrapper
 
 isrHandler24:
-  iretq
+  cli
+  push byte 0
+  push byte 24
+  jmp isrHandlerWrapper
 
 isrHandler25:
-  iretq
+  cli
+  push byte 0
+  push byte 25
+  jmp isrHandlerWrapper
 
 isrHandler26:
-  iretq
+  cli
+  push byte 0
+  push byte 26
+  jmp isrHandlerWrapper
 
 isrHandler27:
-  iretq
+  cli
+  push byte 0
+  push byte 27
+  jmp isrHandlerWrapper
 
 isrHandler28:
-  iretq
+  cli
+  push byte 0
+  push byte 28
+  jmp isrHandlerWrapper
 
 isrHandler29:
-  iretq
+  cli
+  push byte 0
+  push byte 29
+  jmp isrHandlerWrapper
 
 isrHandler30:
-  iretq
+  cli
+  push byte 0
+  push byte 30
+  jmp isrHandlerWrapper
 
 isrHandler31:
-  iretq
+  cli
+  push byte 0
+  push byte 31
+  jmp isrHandlerWrapper

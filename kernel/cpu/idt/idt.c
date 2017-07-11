@@ -1,4 +1,5 @@
 #include "../idt.h"
+#include <arc/print.h>
 
 void setIDTHandler(int num, u64 handler) {
   idtHandlers[num].lowOffset = (u16)(handler & 0xFFFF);
@@ -8,6 +9,10 @@ void setIDTHandler(int num, u64 handler) {
   idtHandlers[num].middleOffset = (u16)((handler >> 16) & 0xFFFF);
   idtHandlers[num].highOffset = (u32)((handler >> 32) & 0xFFFFFFFF);
   idtHandlers[num].reserved = (u32)0;
+}
+
+void isrHandler(registers_t registers) {
+  printk("Interrupt %ld", registers.intNum);
 }
 
 void initIDT(void) {
