@@ -47,5 +47,5 @@ void initIDT(void) {
   setIDTHandler(30, (u64)isrHandler30);
   setIDTHandler(31, (u64)isrHandler31);
 
-  __asm__ __volatile__("lidtq (%0)" : : "r" ((u64) &idtHandlersPointer));
+  loadIDT();
 }

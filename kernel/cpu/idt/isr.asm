@@ -1,3 +1,33 @@
+%macro pushAll 0
+  push rax
+  push rcx
+  push rdx
+  push rbx
+  push rbp
+  push rsi
+  push rdi
+%endmacro
+
+%macro popAll 0
+  pop rdi
+  pop rsi
+  pop rbp
+  pop rbx
+  pop rdx
+  pop rcx
+  pop rax
+%endmacro
+
+isrHandler:
+  pushAll
+  popAll
+
+global loadIDT
+extern idtHandlersPointer
+loadIDT:
+  lidt [idtHandlersPointer]
+  ret
+
 global isrHandler0
 global isrHandler1
 global isrHandler2
