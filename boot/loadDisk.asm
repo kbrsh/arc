@@ -4,7 +4,7 @@ loadDisk:
   push dx
 
   mov ah, 0x02 ; Read operation
-  mov al, 7 ; Read 7 sectors
+  mov al, 8 ; Read 8 sectors
   mov ch, 0x00 ; Read cylinder 0
   mov dh, 0x00 ; Read head 0
   mov cl, 0x02 ; Read from sector 2

@@ -10,9 +10,9 @@ function compile {
   if [ $EXTENSION == ".c" ]
   then
     x86_64-elf-gcc -Wall -ffreestanding -mcmodel=large -mno-red-zone -mno-mmx -mno-sse -mno-sse2 -c $FILE -o $NEWFILE -I include
-  elif [ $EXTENSION == ".asm" ]
+  elif [ $EXTENSION == "sm" ]
   then
-    /usr/local/bin/nasm -f elf $FILE -o $NEWFILE
+    /usr/local/bin/nasm -f elf64 $FILE -o $NEWFILE
   fi
 
   OBJECTFILES+=" $NEWFILE"

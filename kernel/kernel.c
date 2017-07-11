@@ -1,12 +1,9 @@
 #include "kernel.h"
 #include <arc/print.h>
 
+#include "./cpu/idt.h"
+
 void _start(void) {
   clear();
-  printkCenter("Arc");
-  clear();
-  printk("\n");
-  printk("Arc");
-  printk("\n\n");
-  writek(">\t");
+  initIDT();
 }

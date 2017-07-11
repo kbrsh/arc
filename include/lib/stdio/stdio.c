@@ -29,6 +29,14 @@ u32 _calcf(const s8 *str, ...) {
           intDigit = va_arg(list, u32);
           len += intlen(intDigit);
           break;
+
+        case 'l':
+          i++;
+          if(str[i + 1] == 'd') {
+            intDigit = va_arg(list, u64);
+            len += intlen(intDigit);
+          }
+          break;
       }
 
       // Increment position in string
@@ -76,11 +84,29 @@ void _sprintf(s8 *buf, const s8 *str, ...) {
 
           while(intDigit != 0) {
             j--;
-            buf[j] = (char)(48 + (intDigit % 10)); // Take remainder to get last digit
+            buf[j] = (char)(48 + (intDigit % 10));
             intDigit /= 10;
           }
 
           j += length - 1;
+          break;
+
+        case 'l':
+          // Insert digit (as long)
+          i++;
+          if(str[i + 1] == 'd') {
+            intDigit = va_arg(list, u64);
+            length = intlen(intDigit);
+            j += length;
+
+            while(intDigit != 0) {
+              j--;
+              buf[j] = (char)(48 + (intDigit % 10));
+              intDigit /= 10;
+            }
+
+            j += length - 1;
+          }
           break;
       }
 

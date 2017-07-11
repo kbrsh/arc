@@ -1,8 +1,9 @@
 #include "../stdlib.h"
+#include <arc/print.h>
 
-u32 intlen(u32 num) {
+u8 intlen(u64 num) {
   // Length starts at one
-  u32 length = 1;
+  u8 length = 1;
 
   // Keep dividing by ten (base) to reach length
   while(num > 9) {

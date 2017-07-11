@@ -8,3 +8,11 @@ u32 strlen(s8 *str) {
   }
   return i;
 }
+
+void memset(void *voidPointer, u32 item, u64 length) {
+  // Fill memory
+  unsigned char *pointer = (unsigned char*) voidPointer;
+  while(length--) {
+    *pointer++ = item;
+  }
+}

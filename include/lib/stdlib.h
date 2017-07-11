@@ -3,7 +3,7 @@
 
 #include <util/types.h>
 
-u32 intlen(u32 num);
+u8 intlen(u64 num);
 
 void* malloc(u32 size);
 
