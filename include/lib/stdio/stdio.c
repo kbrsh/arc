@@ -1,6 +1,6 @@
 #include "../stdio.h"
-#include <lib/string.h>
 #include <lib/stdarg.h>
+#include <lib/string.h>
 #include <lib/stdlib.h>
 
 u32 _calcf(const s8 *str, ...) {
@@ -14,7 +14,7 @@ u32 _calcf(const s8 *str, ...) {
   s8 special; // Current special identifier
 
   u32 intDigit;
-  u8 intDigit;
+  s8 *currentStr;
 
   while(str[i] != 0) {
     ch = str[i];
@@ -28,8 +28,9 @@ u32 _calcf(const s8 *str, ...) {
 
         case 's':
           // A string
-
-          len += strlen
+          currentStr = va_arg(list, s8*);
+          len += strlen(currentStr);
+          break;
 
         case 'd':
           // A single digit takes up the length of the number
@@ -73,6 +74,8 @@ void _sprintf(s8 *buf, const s8 *str, ...) {
   u32 intDigit;
   u32 length;
 
+  s8 *currentStr;
+
   while(str[i] != 0) {
     ch = str[i];
     if(ch == '%') {
@@ -81,6 +84,15 @@ void _sprintf(s8 *buf, const s8 *str, ...) {
         case 'c':
           // Insert character
           buf[j] = va_arg(list, s8);
+          break;
+
+        case 's':
+          // Insert string
+          currentStr = va_arg(list, s8*);
+          while(*currentStr != '\0') {
+            buf[j++] = *currentStr++;
+          }
+          j--;
           break;
 
         case 'd':

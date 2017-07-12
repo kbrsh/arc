@@ -1,7 +1,7 @@
 #include "../idt.h"
 #include <arc/print.h>
 
-const u8 *exceptionMessages[31] = {
+const s8 *exceptionMessages[31] = {
   "Division By Zero",
   "Debug Breakpoint",
   "Non Maskable Interrupt",
@@ -37,7 +37,6 @@ const u8 *exceptionMessages[31] = {
 
 void isrHandler(registers_t registers) {
   if(registers.intNum < 32) {
-
     error("Exception: %s Identifier: %ld", exceptionMessages[registers.intNum], registers.intNum);
   }
 }

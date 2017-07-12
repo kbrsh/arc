@@ -38,7 +38,7 @@ compileAll include/arc
 compileAll kernel/cpu
 compileAll kernel/process
 compile kernel/kernel.c
-x86_64-elf-ld -o kernel/kernel.bin -T build/build.lds $OBJECTFILES
+x86_64-elf-ld -o kernel/kernel.bin -nostdlib -T build/build.lds $OBJECTFILES
 
 # Compile into one file
 cat boot/boot.bin kernel/kernel.bin > dist/arc
