@@ -1,0 +1,25 @@
+OUTPUT_FORMAT("binary")
+ENTRY(main)
+
+SECTIONS
+{
+  .text 0x10000 : AT(0x10000) {
+    code = .;
+    *(.text)
+    *(.rodata)
+    . = ALIGN(4096);
+  }
+  .data : AT(0x10000 + (data - code))
+  {
+    data = .;
+    *(.data)
+    . = ALIGN(4096);
+  }
+  .bss : AT(0x10000 + (bss - code))
+  {
+    bss = .;
+    *(.bss)
+    . = ALIGN(4096);
+  }
+  end = .;
+}

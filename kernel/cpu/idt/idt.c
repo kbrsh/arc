@@ -1,7 +1,48 @@
 #include "../idt.h"
 #include <arc/print.h>
 
-void setIDTHandler(int num, u64 handler) {
+const u8 *exceptionMessages[31] = {
+  "Division By Zero",
+  "Debug Breakpoint",
+  "Non Maskable Interrupt",
+  "Breakpoint",
+  "Overflow",
+  "Bounds",
+  "Invalid Opcode",
+  "Coprocessor Unavailable",
+  "Double Fault",
+  "Coprocessor Segment Overrun",
+  "Invalid Task State Segment",
+  "Segment Not Present",
+  "Stack Fault",
+  "General Protection Fault",
+  "Page Fault",
+  "Reserved",
+  "x87 Floating-Point Exception",
+  "Alignment Check",
+  "Machine Check",
+  "SIMD Floating-Point Exception",
+  "Virtualization Exception",
+  "Reserved",
+  "Security Exception",
+  "Reserved",
+  "Triple Fault",
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved",
+  "Reserved"
+};
+
+void isrHandler(registers_t registers) {
+  if(registers.intNum < 32) {
+
+    error("Exception: %s Identifier: %ld", exceptionMessages[registers.intNum], registers.intNum);
+  }
+}
+
+void setIDTHandler(u32 num, u64 handler) {
   idtHandlers[num].lowOffset = (u16)(handler & 0xFFFF);
   idtHandlers[num].selector = (u16)0x08;
   idtHandlers[num].always0 = (u8)0;
@@ -9,10 +50,6 @@ void setIDTHandler(int num, u64 handler) {
   idtHandlers[num].middleOffset = (u16)((handler >> 16) & 0xFFFF);
   idtHandlers[num].highOffset = (u32)((handler >> 32) & 0xFFFFFFFF);
   idtHandlers[num].reserved = (u32)0;
-}
-
-void isrHandler(registers_t registers) {
-  printk("Interrupt %ld", registers.intNum);
 }
 
 void initIDT(void) {

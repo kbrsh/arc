@@ -35,8 +35,10 @@ compileAll drivers
 compileAll include/util
 compileAll include/lib
 compileAll include/arc
-compileAll kernel
-x86_64-elf-ld -o kernel/kernel.bin -Ttext 0x10000 $OBJECTFILES --oformat binary
+compileAll kernel/cpu
+compileAll kernel/process
+compile kernel/kernel.c
+x86_64-elf-ld -o kernel/kernel.bin -T build/build.lds $OBJECTFILES
 
 # Compile into one file
 cat boot/boot.bin kernel/kernel.bin > dist/arc

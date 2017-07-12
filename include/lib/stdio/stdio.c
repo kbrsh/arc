@@ -1,4 +1,5 @@
 #include "../stdio.h"
+#include <lib/string.h>
 #include <lib/stdarg.h>
 #include <lib/stdlib.h>
 
@@ -13,6 +14,7 @@ u32 _calcf(const s8 *str, ...) {
   s8 special; // Current special identifier
 
   u32 intDigit;
+  u8 intDigit;
 
   while(str[i] != 0) {
     ch = str[i];
@@ -23,6 +25,11 @@ u32 _calcf(const s8 *str, ...) {
           // A character takes up a byte
           len++;
           break;
+
+        case 's':
+          // A string
+
+          len += strlen
 
         case 'd':
           // A single digit takes up the length of the number

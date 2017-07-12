@@ -65,7 +65,7 @@ extern void isrHandler31(void);
 
 extern void loadIDT(void);
 
-void setIDTHandler(int num, u64 handler);
+void setIDTHandler(u32 num, u64 handler);
 void initIDT(void);
 
 #endif

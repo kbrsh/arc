@@ -3,6 +3,7 @@
 
 #include <util/types.h>
 #include <lib/stdio.h>
+#include <lib/string.h>
 
 void clear(void);
 
@@ -13,5 +14,7 @@ void _writek(s8 *str);
 void _printk(s8 *str);
 
 void printkCenter(s8 *str);
+
+#define error(str, ...) { u32 size = 13 + calcf(str, ##__VA_ARGS__); u32 newStrSize = 13 + strlen(str); s8 newStr[newStrSize]; strcpy(newStr, "[Arc] ERROR: "); strcat(newStr, str); s8 buf[size]; sprintf(buf, newStr, ##__VA_ARGS__); _printk(buf); }
 
 #endif
