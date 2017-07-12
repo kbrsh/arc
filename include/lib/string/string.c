@@ -4,8 +4,9 @@ u32 strlen(s8 *str) {
   // Iterate through null terminated string and find length
   u32 i = 0;
 
-  while(str[i++] != '\0')
-    ;
+  while(str[i] != '\0') {
+    i++;
+  }
 
   return i;
 }
@@ -13,9 +14,8 @@ u32 strlen(s8 *str) {
 s8 strcpy(s8 *str, const s8 *copy) {
   s8 *start = str;
 
-  while(*copy != '\0') {
-    *str++ = *copy++;
-  }
+  while((*str++ = *copy++) != '\0')
+    ;
 
   return *(s8*)start;
 }
@@ -23,8 +23,9 @@ s8 strcpy(s8 *str, const s8 *copy) {
 s8 strcat(s8 *str, const s8 *add) {
   s8 *start = str;
 
-  while(*str++ != '\0')
-    ;
+  while(*str != '\0') {
+    str++;
+  }
 
   while((*str++ = *add++) != '\0')
     ;
