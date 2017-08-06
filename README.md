@@ -54,3 +54,7 @@ Minimalistic Kernel for Learning
 <!-- Also needs: Syntax for `ash` - Based on 'sh' -->
 <!-- Also needs: Book -->
 <!-- Also needs: Specific Arch Support (bootloader) -->
+
+## License
+
+Licensed under the [MIT License](https://kbrsh.github.io/license) by [Kabir Shah](https://kabir.ml)
